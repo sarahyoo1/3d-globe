@@ -1,1 +1,1 @@
-a webssite displaying 3D globe made in threejs
+a website displaying 3D globe with threejs
