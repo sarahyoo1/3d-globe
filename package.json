@@ -1,4 +1,6 @@
 {
+  "homepage" : "https://ge3626.github.io/3DEarth/",
+  "name": "3DEarth",
   "dependencies": {
     "gsap": "^3.12.4",
     "three": "^0.160.0"
@@ -6,5 +8,11 @@
   "devDependencies": {
     "vite": "^5.0.10",
     "vite-plugin-string": "^1.2.2"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   }
 }
