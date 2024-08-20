@@ -67,11 +67,23 @@ camera.position.z = 15;
 
 let isDragging = false;
 let previousMousePosition = { x: 0, y: 0 };
+let velocity = { x: 0, y: 0 }; 
+let inertia = 0.95; 
+let rotationSpeed = 0.005;
 
 function animate() {
     requestAnimationFrame(animate);
+
+    if (!isDragging) {
+        velocity.x *= inertia;
+        velocity.y *= inertia;
+
+        group.rotation.y += velocity.x;
+        group.rotation.x += velocity.y;
+    }
+
     renderer.render(scene, camera);
-    sphere.rotation.y += 0.005; 
+    sphere.rotation.y += 0.01;
 }
 
 animate();
@@ -79,6 +91,7 @@ animate();
 window.addEventListener('mousedown', (event) => {
     isDragging = true;
     previousMousePosition = { x: event.clientX, y: event.clientY };
+    velocity = { x: 0, y: 0 }; 
 });
 
 window.addEventListener('mousemove', (event) => {
@@ -88,8 +101,11 @@ window.addEventListener('mousemove', (event) => {
             y: event.clientY - previousMousePosition.y,
         };
 
-        group.rotation.y += deltaMove.x * 0.005;
-        group.rotation.x += deltaMove.y * 0.005;
+        group.rotation.y += deltaMove.x * rotationSpeed;
+        group.rotation.x += deltaMove.y * rotationSpeed;
+
+        velocity.x = deltaMove.x * rotationSpeed;
+        velocity.y = deltaMove.y * rotationSpeed;
 
         previousMousePosition = { x: event.clientX, y: event.clientY };
     }
