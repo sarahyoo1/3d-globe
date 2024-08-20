@@ -17,7 +17,7 @@ renderer.setPixelRatio(window.devicePixelRatio)
 document.body.appendChild(renderer.domElement)
 
 const sphere = new THREE.Mesh(
-    new THREE.SphereGeometry(5, 50, 50),                            
+    new THREE.SphereGeometry(5, 50, 50),            
     new THREE.ShaderMaterial({
         vertexShader,
         fragmentShader,
