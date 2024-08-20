@@ -80,10 +80,10 @@ function animate() {
 
         group.rotation.y += velocity.x;
         group.rotation.x += velocity.y;
+        
+        sphere.rotation.y += 0.01;
     }
-
     renderer.render(scene, camera);
-    sphere.rotation.y += 0.01;
 }
 
 animate();
